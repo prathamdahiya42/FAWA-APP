@@ -21,11 +21,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: 🟢 Setup Node.js 22
+      - name: 🟢 Setup Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: 'npm'
+
+      - name: 🤖 Setup Android SDK
+        uses: android-actions/setup-android@v3
 
       - name: 📦 Install NPM Dependencies
         run: npm install --legacy-peer-deps
@@ -34,7 +37,10 @@ jobs:
         run: npm test
 
       - name: ⚙️ Generate Native Android Code (Expo Prebuild)
-        run: npx expo prebuild --platform android --clean
+        run: npx expo prebuild --platform android --clean --no-install
+
+      - name: 🐘 Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: 🔨 Compile APK with Gradle
         working-directory: ./android
