@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build Android Release APK
 
 on:
   workflow_dispatch:
@@ -8,8 +8,10 @@ on:
 
 jobs:
   build:
-    name: 🏗️ Build APK
+    name: 🏗️ Build Release APK
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: ⬇️ Checkout Repository
@@ -28,7 +30,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Install NPM Dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci --legacy-peer-deps
 
       - name: 🧪 Run Engine Unit Tests
         run: npm test
@@ -39,16 +41,36 @@ jobs:
       - name: 🐘 Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: 🔨 Compile APK with Gradle
+      - name: 🔨 Compile Standalone Release APK
         working-directory: ./android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleRelease --no-daemon
 
-      - name: 📤 Upload Installable APK
+      - name: 📤 Upload Installable Release APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: FAWA-Winter-Arc-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: FAWA-Winter-Arc-Release-APK
+          path: android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
           retention-days: 14
+
+      - name: 🚀 Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        continue-on-error: true
+        with:
+          tag_name: release-v1.0.0
+          name: FAWA Winter Arc v1.0.0 (Release APK)
+          body: |
+            ## FAWA Winter Arc — Standalone Release APK
+
+            This is a standalone, offline-first production Release APK with embedded JavaScript bundle.
+            - Built with `./gradlew assembleRelease`
+            - Signed with debug keystore for easy sideloading without certificate errors
+            - Embedded Hermes JS bundle (`index.android.bundle`) — works 100% offline without Metro server or PC connection
+
+            ### Installation:
+            1. Download `app-release.apk`
+            2. Open the file on your Android phone and install
+          files: android/app/build/outputs/apk/release/app-release.apk
