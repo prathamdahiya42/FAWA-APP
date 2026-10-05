@@ -27,9 +27,6 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: 🤖 Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: 📦 Install NPM Dependencies
         run: npm install --legacy-peer-deps
 
