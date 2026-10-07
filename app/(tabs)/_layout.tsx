@@ -7,7 +7,7 @@ import Svg, { Path, Circle } from 'react-native-svg';
 
 // ── Inline SVG icons (avoids native icon font dependency issues) ──────────────
 
-function IconToday({ color, size = 22 }: { color: string; size?: number }) {
+function IconToday({ color, size = 22 }: { color: any; size?: number }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <Path d="M3 9h18M7 3v2m10-2v2M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
@@ -16,7 +16,7 @@ function IconToday({ color, size = 22 }: { color: string; size?: number }) {
   );
 }
 
-function IconPlan({ color, size = 22 }: { color: string; size?: number }) {
+function IconPlan({ color, size = 22 }: { color: any; size?: number }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <Path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
@@ -24,7 +24,7 @@ function IconPlan({ color, size = 22 }: { color: string; size?: number }) {
   );
 }
 
-function IconCapture({ color, size = 22 }: { color: string; size?: number }) {
+function IconCapture({ color, size = 22 }: { color: any; size?: number }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <Path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
@@ -32,7 +32,7 @@ function IconCapture({ color, size = 22 }: { color: string; size?: number }) {
   );
 }
 
-function IconProgress({ color, size = 22 }: { color: string; size?: number }) {
+function IconProgress({ color, size = 22 }: { color: any; size?: number }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <Path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />

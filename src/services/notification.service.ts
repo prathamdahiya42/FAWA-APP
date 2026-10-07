@@ -9,6 +9,8 @@ Notifications.setNotificationHandler({
     shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: false,
+    shouldShowBanner: true,
+    shouldShowList: true,
   }),
 });
 
@@ -78,7 +80,11 @@ export async function scheduleSingleNotification(
 ): Promise<string> {
   const channelId = priority === 'alarm' ? ALARM_CHANNEL_ID : REMINDER_CHANNEL_ID;
 
-  const trigger: Notifications.NotificationTriggerInput = fireAt;
+  const trigger: Notifications.NotificationTriggerInput = {
+    type: Notifications.SchedulableTriggerInputTypes.DATE,
+    date: fireAt,
+    channelId,
+  };
 
   const identifier = await Notifications.scheduleNotificationAsync({
     content: {

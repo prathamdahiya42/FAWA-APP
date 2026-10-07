@@ -616,7 +616,6 @@ const exercises: Exercise[] = [
     harderId: null,
     substitutions: {},
     bmiBandRestrictions: {
-      beginner_flag: { blockedUntilDay: 15, reason: 'Jump squats unlock on Day 16 for Beginners.' },
       overweight:    { blockedUntilDay: 15, reason: 'Jump squats unlock on Day 16 for the Overweight band.' },
       obese:         { blockedUntilDay: 30, swapToId: 'L1', reason: 'Jump squats unlock on Day 31 for the Obese band. Using bodyweight squat.' },
     },

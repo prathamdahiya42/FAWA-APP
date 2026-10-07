@@ -226,7 +226,7 @@ export default function PlacementTestScreen() {
         {mode === 'pick' && age >= 16 && (
           <>
             {[
-              { id: 'test' as Mode, label: 'Do a quick test now', desc: 'We'll classify you based on your numbers.' },
+              { id: 'test' as Mode, label: 'Do a quick test now', desc: "We'll classify you based on your numbers." },
               { id: 'know' as Mode, label: 'I know my numbers', desc: 'Enter your stats and see your level instantly.' },
               { id: 'beginner' as Mode, label: 'Start as Beginner (safest choice)', desc: 'Skip the test and begin at day 1 foundation level.' },
             ].map((opt) => (
@@ -289,7 +289,7 @@ export default function PlacementTestScreen() {
             </Text>
             <Text style={[styles.resultDesc, { color: resultInk, fontFamily: FontFamilies.bodyRegular }]}>
               {result === 'intermediate'
-                ? 'You're ready for the intermediate track. Harder sessions, bigger gains.'
+                ? "You're ready for the intermediate track. Harder sessions, bigger gains."
                 : 'The safest, most effective way to start. Build your base first.'}
             </Text>
           </View>

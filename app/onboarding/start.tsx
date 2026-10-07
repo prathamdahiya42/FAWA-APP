@@ -227,12 +227,12 @@ export default function OnboardingStartScreen() {
       await setOnboardingCompleted(true);
 
       // Clean up temporary drafts
-      await AsyncStorage.multiRemove([
-        '@fawa_temp_about',
-        '@fawa_temp_health',
-        '@fawa_temp_equipment',
-        '@fawa_temp_level',
-        '@fawa_temp_day',
+      await Promise.all([
+        AsyncStorage.removeItem('@fawa_temp_about'),
+        AsyncStorage.removeItem('@fawa_temp_health'),
+        AsyncStorage.removeItem('@fawa_temp_equipment'),
+        AsyncStorage.removeItem('@fawa_temp_level'),
+        AsyncStorage.removeItem('@fawa_temp_day'),
       ]);
 
       // Route into main tabs

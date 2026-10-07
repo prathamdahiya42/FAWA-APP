@@ -13,7 +13,7 @@ import { useKeepAwake } from 'expo-keep-awake';
 import { format } from 'date-fns';
 import { useThemeColors } from '@/src/theme';
 import { FontFamilies, TypeScale } from '@/src/theme/typography';
-import { Spacing, Radius } from '@/src/theme/spacing';
+import { Spacing, Radius, TouchTarget } from '@/src/theme/spacing';
 import { HoldButton } from '@/src/ui/HoldButton';
 import { useReminderStore } from '@/src/store/reminder.store';
 import { useUIStore } from '@/src/store/ui.store';

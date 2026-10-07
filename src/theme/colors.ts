@@ -31,7 +31,7 @@ export const LightColors = {
 } as const;
 
 export type ColorToken = keyof typeof DarkColors;
-export type Colors = typeof DarkColors;
+export type Colors = Record<ColorToken, string>;
 
 /** Phase accent gradients — shift colour temperature across the 60-day arc */
 export const PhaseAccents = {
